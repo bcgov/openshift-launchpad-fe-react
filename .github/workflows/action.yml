@@ -1,0 +1,18 @@
+name: Pull Request Deployment
+on: pull_request
+jobs:
+  deploy:
+    name: OpenShift Deployment
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Use Pipeline Action
+        uses: bcgov/openshift-launchpad-deployment@github-action
+        with:
+          MODE: client
+          AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
+          NAMESPACE: apdwlc-tools
+          APP_NAME: myapp-pr${{ github.event.number }}
+          API_URL: https://test.com
+          CLIENT_PORT: 5001
