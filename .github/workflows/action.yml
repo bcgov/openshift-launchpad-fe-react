@@ -15,4 +15,4 @@ jobs:
           NAMESPACE: apdwlc-tools
           APP_NAME: myapp-pr${{ github.event.number }}
           API_URL: https://test.com
-          CLIENT_PORT: 5001
+          CLIENT_PORT: 3000
